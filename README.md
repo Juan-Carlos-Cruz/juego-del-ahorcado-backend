@@ -1,6 +1,6 @@
 # Juego del Ahorcado API
 
-Backend MVP construido con FastAPI para ser consumido por un frontend web o móvil.
+Aplicación MVP con un backend en FastAPI y un frontend en React con Vite.
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Juan-Carlos-Cruz/juego-del-ahorcado-backend)
 
@@ -72,6 +72,11 @@ pytest -q
 
 ## Despliegue en Render
 
-El archivo `render.yaml` permite crear el servicio como Blueprint. Usa el botón **Deploy to Render**, inicia sesión y confirma la creación del servicio. En producción cambia `ALLOWED_ORIGINS` por la URL exacta del frontend.
+El archivo `render.yaml` crea dos servicios mediante un mismo Blueprint:
+
+- `juego-del-ahorcado-api`: API desarrollada con FastAPI.
+- `juego-del-ahorcado-frontend`: sitio estático desarrollado con React.
+
+Usa el botón **Deploy to Render**, inicia sesión y confirma la creación de ambos servicios. El frontend recibe la URL pública del backend mediante `VITE_API_URL`.
 
 El plan gratuito usa SQLite en almacenamiento temporal; las partidas pueden reiniciarse al redesplegar o reiniciar la instancia. Para una versión posterior se recomienda PostgreSQL administrado.

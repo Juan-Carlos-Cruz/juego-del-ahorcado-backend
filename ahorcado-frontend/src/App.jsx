@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import './App.css'
 
-// La API habilita CORS solo para http://localhost:5173 (ver app/main.py).
 const API_URL = (
   import.meta.env.VITE_API_URL ?? 'https://juego-del-ahorcado-api.onrender.com'
 ).replace(/\/$/, '')

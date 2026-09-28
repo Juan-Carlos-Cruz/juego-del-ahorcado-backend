@@ -14,3 +14,12 @@ services:
       - key: DATABASE_PATH
         value: /tmp/hangman.db
 
+  - type: web
+    name: juego-del-ahorcado-frontend
+    runtime: static
+    rootDir: ahorcado-frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://juego-del-ahorcado-api.onrender.com

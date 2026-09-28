@@ -30,13 +30,12 @@ app = FastAPI(
     description="API REST para jugar al ahorcado desde cualquier frontend.",
     version="1.0.0",
     lifespan=lifespan,
-) 
+)
 
-# Configuración de CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"], # El puerto de tu app React (Vite)
-    allow_credentials=True,
+    allow_origins=settings.allowed_origins,
+    allow_credentials=settings.allowed_origins != ["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
