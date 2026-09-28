@@ -1,15 +1,65 @@
 .App {
+  --tecla-fondo: #f9f9f9;
+  --tecla-borde: #ccc;
+  --tecla-texto: #1f1d24;
+  --acierto-texto: #0f7a4a;
+  --acierto-fondo: #e8f5ee;
+  --fallo-texto: #b3261e;
+  --fallo-fondo: #fdecea;
+  --foco: #007bff;
+
   text-align: center;
   font-family: Arial, sans-serif;
   max-width: 600px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 24px 20px 48px;
 }
 
+/* index.css activa el esquema oscuro del sistema: sin colores explícitos los
+   botones heredan el texto claro del navegador sobre fondos claros. */
+@media (prefers-color-scheme: dark) {
+  .App {
+    --tecla-fondo: #2a2c36;
+    --tecla-borde: #474a58;
+    --tecla-texto: #f3f4f6;
+    --acierto-texto: #7ee2a8;
+    --acierto-fondo: rgba(74, 222, 128, 0.14);
+    --fallo-texto: #fca5a5;
+    --fallo-fondo: rgba(248, 113, 113, 0.14);
+  }
+}
+
+.ayuda {
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.info-juego {
+  color: var(--text);
+}
+
+.categoria {
+  margin-bottom: 4px;
+}
+
+/* El backend ya separa las letras con espacios ("_ _ A _"): el hueco lo da el
+   gap y no un letter-spacing que se sumaba a los espacios. */
 .palabra {
-  letter-spacing: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35em;
   font-size: 2rem;
   margin: 20px 0;
+}
+
+.letra {
+  line-height: 1.1;
+  color: var(--text-h);
+}
+
+.letra-oculta {
+  color: var(--text);
 }
 
 .teclado {
@@ -21,31 +71,103 @@
 }
 
 .teclado button {
-  padding: 10px 15px;
-  font-size: 1.2rem;
+  min-width: 2.75rem;
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 1.1rem;
+  color: var(--tecla-texto);
+  background-color: var(--tecla-fondo);
+  border: 1px solid var(--tecla-borde);
+  border-radius: 8px;
   cursor: pointer;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    transform 60ms ease;
+}
+
+.teclado button:hover:not(:disabled) {
+  border-color: var(--foco);
+}
+
+.teclado button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.teclado button:focus-visible {
+  outline: 2px solid var(--foco);
+  outline-offset: 2px;
 }
 
 .teclado button:disabled {
-  background-color: #ddd;
   cursor: not-allowed;
 }
 
-.btn-iniciar {
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.teclado .tecla-acierto,
+.teclado .tecla-acierto:disabled {
+  color: var(--acierto-texto);
+  background-color: var(--acierto-fondo);
+  border-color: currentColor;
+}
+
+.teclado .tecla-fallo,
+.teclado .tecla-fallo:disabled {
+  color: var(--fallo-texto);
+  background-color: var(--fallo-fondo);
+  border-color: currentColor;
 }
 
 .mensaje {
   margin-top: 20px;
-  font-weight: bold;
-  color: #d9534f;
+  font-weight: 700;
+}
+
+.mensaje-acierto {
+  color: var(--acierto-texto);
+}
+
+.mensaje-fallo,
+.mensaje-error {
+  color: var(--fallo-texto);
+}
+
+.resultado {
+  margin-top: 28px;
+}
+
+.palabra-final {
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.palabra-final strong {
+  color: var(--text-h);
+}
+
+.btn-iniciar {
+  padding: 12px 24px;
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  background-color: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.btn-iniciar:hover:not(:disabled) {
+  background-color: #0069d9;
+  border-color: #0069d9;
+}
+
+.btn-iniciar:focus-visible {
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
+}
+
+.btn-iniciar:disabled {
+  opacity: 0.75;
+  cursor: progress;
 }
