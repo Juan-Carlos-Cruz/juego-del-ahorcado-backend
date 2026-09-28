@@ -1,0 +1,51 @@
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.palabra {
+  letter-spacing: 10px;
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+.teclado {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.teclado button {
+  padding: 10px 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.teclado button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.btn-iniciar {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.mensaje {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #d9534f;
+}
