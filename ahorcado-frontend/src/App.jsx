@@ -48,16 +48,18 @@ function App() {
     if (estadoJuego !== 'playing') return
 
     try {
-      // Usamos la ruta de guesses de Swagger UI
       const response = await fetch(`${API_URL}/api/v1/games/${juegoId}/guesses`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        // Asumiendo que el request body para enviar la letra es 'letter'
-        body: JSON.stringify({ letter: letra.toLowerCase() }) 
+        // Se corrigió "letter" por "guess"
+        body: JSON.stringify({ guess: letra.toLowerCase() }) 
       })
       
       if (!response.ok) {
-        throw new Error(`Error HTTP: ${response.status}`)
+        const errorData = await response.json()
+        console.error("Detalle del error 422 (FastAPI):", JSON.stringify(errorData.detail, null, 2))
+        setMensaje("Error 422: Revisa la consola del navegador para ver qué campo falta.")
+        return 
       }
 
       const data = await response.json()
