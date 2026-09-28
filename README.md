@@ -2,6 +2,8 @@
 
 Backend MVP construido con FastAPI para ser consumido por un frontend web o móvil.
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Juan-Carlos-Cruz/juego-del-ahorcado-backend)
+
 ## Funcionalidades
 
 - Crear una partida con categoría aleatoria o elegida.
@@ -70,6 +72,6 @@ pytest -q
 
 ## Despliegue en Render
 
-El archivo `render.yaml` permite crear el servicio como Blueprint. Conecta este repositorio en Render y el servicio se configura automáticamente. En producción cambia `ALLOWED_ORIGINS` por la URL exacta del frontend.
+El archivo `render.yaml` permite crear el servicio como Blueprint. Usa el botón **Deploy to Render**, inicia sesión y confirma la creación del servicio. En producción cambia `ALLOWED_ORIGINS` por la URL exacta del frontend.
 
 El plan gratuito usa SQLite en almacenamiento temporal; las partidas pueden reiniciarse al redesplegar o reiniciar la instancia. Para una versión posterior se recomienda PostgreSQL administrado.
